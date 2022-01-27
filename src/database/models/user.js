@@ -24,7 +24,9 @@ export default function (sequelize) {
     }
 
     static associate(models) {
-      User.hasMany(models.tweet, { foreignKey: 'userId' });
+      User.belongsTo(models.role, { foreignKey: 'roleId' });
+
+      User.belongsToMany(models.product, { through: 'userProductRating' });
     }
   }
 
@@ -46,6 +48,10 @@ export default function (sequelize) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    gender: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   }, {
     modelName: 'user',
     sequelize,
@@ -61,8 +67,8 @@ export default function (sequelize) {
   User.addHook('afterCreate', (instance) => {
     // Send welcome message to user.
     const payload = {
-      subject: 'Welcome to Express Starter',
-      html: 'Your account is created successfully!',
+      subject: 'Welcome to CubeTown Store!',
+      html: '<h1>Your account is created successfully!</h1>',
     };
     instance.sendMail(payload);
   });

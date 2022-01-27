@@ -9,7 +9,7 @@ const env = process.env.NODE_ENV;
 const sequelizeConfig = config[env];
 
 // Create sequelize instance
-const sequelize = new Sequelize(sequelizeConfig);
+const sequelize = new Sequelize({ ...sequelizeConfig, logging: console.log });
 
 // Import all model files
 const models = {};
@@ -17,7 +17,7 @@ const modelsPath = `${__dirname}/models`;
 
 fs
   .readdirSync(modelsPath)
-  .filter((file) => (file.indexOf('.') !== 0) && (file.slice(-3) === '.js'))
+  .filter((file) => (file.indexOf('.') !== 0) && (file.slice(-3) === '.js') && (file !== 'index.js'))
   .forEach((file) => {
     const model = sequelize.import(path.join(modelsPath, file));
     models[model.name] = model;

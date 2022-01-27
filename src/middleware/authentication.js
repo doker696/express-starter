@@ -4,10 +4,8 @@ import { tokenHelper } from '@/helpers';
 export default async function (req, res, next) {
   // Get authorization header from request
   const { authorization, refreshtoken: refreshToken } = req.headers;
-
   // Firstly, set request user to null
   req.user = null;
-
   if (authorization) {
     // Make sure the token is bearer token
     const isBearerToken = authorization.startsWith('Bearer ');
@@ -19,7 +17,6 @@ export default async function (req, res, next) {
       try {
         // Verify token and get token data
         const tokenData = await tokenHelper.verifyToken(token);
-
         // Find user from database
         const user = await db.models.user.findByPk(tokenData.id);
         if (!user) {
@@ -28,7 +25,6 @@ export default async function (req, res, next) {
 
         // Set request user
         req.user = user;
-
         // Check if the token renewal time is coming
         const now = new Date();
         const exp = new Date(tokenData.exp * 1000);

@@ -7,24 +7,21 @@ const {
 async function getTransporter() {
   let transporter;
   if (NODE_ENV !== 'production') {
-    const testAccount = await createTestAccount();
     transporter = createTransport({
-      host: 'smtp.ethereal.email',
-      port: 587,
-      secure: false,
+      host: 'smtp.mailtrap.io',
+      port: 2525,
       auth: {
-        user: testAccount.user,
-        pass: testAccount.pass,
+        user: '158a89e1379abe',
+        pass: '9c933821185ed0',
       },
     });
   } else {
     transporter = createTransport({
-      host: SMTP_HOST,
-      port: SMTP_PORT,
-      secure: Number(SMTP_PORT) === 465,
+      host: 'smtp.gmail.com',
+      port: 465,
       auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASSWORD,
+        user: 'tokorev.kir@gmail.com',
+        pass: '6f4t1q4lcj9o',
       },
     });
   }
@@ -41,7 +38,7 @@ export async function sendMail(mail) {
 
   // Create transporter
   const transporter = await getTransporter();
-
+  console.log('sendMail');
   // Send mail
   const mailInfo = await transporter.sendMail(payload);
 

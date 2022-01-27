@@ -25,7 +25,7 @@ export const login = async (req, res, next) => {
     // Generate and return token
     const token = user.generateToken();
     const refreshToken = user.generateToken('2h');
-    return res.status(200).json({ token, refreshToken });
+    return res.status(200).json({ token, refreshToken, user: { ...user.dataValues, password: undefined } });
   } catch (err) {
     return next(err);
   }
@@ -37,16 +37,22 @@ export const login = async (req, res, next) => {
  */
 export const register = async (req, res, next) => {
   try {
+    const userData = { ...req.body, roleId: 2 };
+    // Check email unique
+    const emailUnique = await db.models.user.findOne({ where: { email: userData.email } });
+    if (emailUnique) {
+      next(createError(400, 'Почта уже занята!'));
+      return;
+    }
     // Create user
-    const user = await db.models.user
-      .create(req.body, {
-        fields: ['firstName', 'lastName', 'email', 'password'],
-      });
-
+    const user = await db.models.user.create(userData, {
+      fields: ['firstName', 'lastName', 'email', 'password', 'roleId', 'gender'],
+    });
     // Generate and return tokens
     const token = user.generateToken();
     const refreshToken = user.generateToken('2h');
-    res.status(201).json({ token, refreshToken });
+
+    res.status(201).json({ user: { ...user.dataValues, password: undefined }, token, refreshToken });
   } catch (err) {
     next(err);
   }
