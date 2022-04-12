@@ -7,7 +7,8 @@ const router = Router();
 
 router.route('/')
   .get(productController.getProducts)
-  .post(productController.createProduct);
+  .post(productController.createProduct)
+  .put(productController.updateProduct);
 
 router.route('/:id')
   .get(productController.getProductsById);

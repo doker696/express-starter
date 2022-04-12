@@ -17,7 +17,7 @@
     "start:dev": "nodemon --ignore dist/ --ignore test/ --exec babel-node ./src/bin/www.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "NODE_ENV=test mocha --require @babel/register --exit",
+    "test": "mocha --require @babel/register --exit",
     "db:migrate": "npx sequelize-cli db:migrate"
   },
   "dependencies": {
@@ -40,6 +40,7 @@
     "pg-hstore": "^2.3.4",
     "redis": "^3.1.1",
     "sequelize": "^5.22.5",
+    "supertest": "^6.2.2",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.4"
   },

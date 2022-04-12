@@ -33,9 +33,13 @@ export const getOrders = async (req, res, next) => {
 // eslint-disable-next-line import/prefer-default-export
 export const createOrder = async (req, res, next) => {
   try {
-    const { userId, productsIds, date } = req.body;
+    const {
+      userId, productsIds, date, adress, fio,
+    } = req.body;
 
-    const order = await db.models.order.create({ userId, date });
+    const order = await db.models.order.create({
+      userId, date, adress, fio,
+    });
 
     const orderProduct = await db.models.OrderProduct.bulkCreate(productsIds.map((id) => ({ orderId: order.id, productId: id })));
 
@@ -44,3 +48,4 @@ export const createOrder = async (req, res, next) => {
     return next(err);
   }
 };
+

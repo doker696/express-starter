@@ -4,7 +4,7 @@ export const getCharacteristicsOfCategory = async (req, res, next) => {
   try {
     const characteristics = await db.models.CategoryCharacteristic.findAll({
       where: {
-        categoryId: req.body.categoryId,
+        categoryId: req.params.id,
       },
     });
 
@@ -34,6 +34,19 @@ export const setCharacteristicToCategory = async (req, res, next) => {
     );
 
     return res.status(201).json(characteristics);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+export const setCharacteristicToProduct = async (req, res, next) => {
+  try {
+    const { productId, characteristicId, value } = req.body;
+    const data = await db.models.productCharacteristic.create(
+      { productId, characteristicId, value },
+    );
+
+    return res.status(201).json(data);
   } catch (error) {
     return next(error);
   }

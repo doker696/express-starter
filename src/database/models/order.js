@@ -13,6 +13,14 @@ export default function (sequelize) {
       type: DataTypes.DATE,
       allowNull: false,
     },
+    adress: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    fio: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
   }, {
     modelName: 'order',
     sequelize,

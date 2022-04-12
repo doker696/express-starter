@@ -154,6 +154,16 @@
                     "field": "date",
                     "seqType": "Sequelize.DATE"
                 },
+                "adress": {
+                    "allowNull": false,
+                    "field": "adress",
+                    "seqType": "Sequelize.STRING(255)"
+                },
+                "fio": {
+                    "allowNull": false,
+                    "field": "fio",
+                    "seqType": "Sequelize.STRING(255)"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "field": "createdAt",
@@ -209,6 +219,10 @@
                 "rating": {
                     "field": "rating",
                     "seqType": "Sequelize.FLOAT"
+                },
+                "price": {
+                    "field": "price",
+                    "seqType": "Sequelize.INTEGER"
                 },
                 "createdAt": {
                     "allowNull": false,
@@ -407,6 +421,11 @@
                     "field": "gender",
                     "seqType": "Sequelize.BOOLEAN"
                 },
+                "gender2": {
+                    "allowNull": true,
+                    "field": "gender2",
+                    "seqType": "Sequelize.BOOLEAN"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "field": "createdAt",
@@ -562,5 +581,5 @@
     "path": "C:\\Users\\Kirilll\\4 курс\\DIPLOM\\server\\src\\database\\migrations\\_current.json",
     "backupPath": "C:\\Users\\Kirilll\\4 курс\\DIPLOM\\server\\src\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 20
+    "revision": 23
 }

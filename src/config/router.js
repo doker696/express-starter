@@ -6,6 +6,7 @@ import brandRouter from '@/routes/brand';
 import categoryRouter from '@/routes/category';
 import characteristicRouter from '@/routes/characteristic';
 import orderRouter from '@/routes/order';
+import statRouter from '@/routes/statistic';
 
 export default function (app) {
   app.use('/', indexRouter);
@@ -16,4 +17,5 @@ export default function (app) {
   app.use('/category', categoryRouter);
   app.use('/characteristic', characteristicRouter);
   app.use('/order', orderRouter);
+  app.use('/stats', statRouter);
 }

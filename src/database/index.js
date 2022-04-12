@@ -9,7 +9,8 @@ const env = process.env.NODE_ENV;
 const sequelizeConfig = config[env];
 
 // Create sequelize instance
-const sequelize = new Sequelize({ ...sequelizeConfig, logging: console.log });
+// const sequelize = new Sequelize({ ...sequelizeConfig, logging: console.log });
+const sequelize = new Sequelize({ ...sequelizeConfig });
 
 // Import all model files
 const models = {};

@@ -14,7 +14,10 @@ router.route('/create')
 router.route('/set')
   .post(characteristicController.setCharacteristicToCategory);
 
-router.route('/category')
-  .post(characteristicController.getCharacteristicsOfCategory);
+router.route('/category/:id')
+  .get(characteristicController.getCharacteristicsOfCategory);
+
+router.route('/product/set')
+  .post(characteristicController.setCharacteristicToProduct);
 
 export default router;

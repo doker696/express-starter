@@ -26,5 +26,19 @@ export default function (sequelize) {
     await sequelize.models.product.update({ rating: parseRating }, { where: { id: instance.productId } });
   });
 
+
+  UserProductRating.addHook('afterUpdate', async (instance) => {
+    const avgRating = await sequelize.models.userProductRating.findAll({
+      where: {
+        productId: instance.productId,
+      },
+      attributes: [
+        [Sequelize.fn('AVG', Sequelize.col('value')), 'rating'],
+      ],
+    });
+    const parseRating = Number.parseFloat(avgRating[0].dataValues.rating).toFixed(2);
+    await sequelize.models.product.update({ rating: parseRating }, { where: { id: instance.productId } });
+  });
+
   return UserProductRating;
 }

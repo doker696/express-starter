@@ -154,6 +154,16 @@
                     "field": "date",
                     "seqType": "Sequelize.DATE"
                 },
+                "adress": {
+                    "allowNull": false,
+                    "field": "adress",
+                    "seqType": "Sequelize.STRING(255)"
+                },
+                "fio": {
+                    "allowNull": false,
+                    "field": "fio",
+                    "seqType": "Sequelize.STRING(255)"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "field": "createdAt",
@@ -566,5 +576,5 @@
     "path": "C:\\Users\\Kirilll\\4 курс\\DIPLOM\\server\\src\\database\\migrations\\_current.json",
     "backupPath": "C:\\Users\\Kirilll\\4 курс\\DIPLOM\\server\\src\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 21
+    "revision": 24
 }
