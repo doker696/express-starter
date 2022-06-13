@@ -203,12 +203,10 @@
                     "seqType": "Sequelize.INTEGER"
                 },
                 "name": {
-                    "allowNull": false,
                     "field": "name",
                     "seqType": "Sequelize.STRING(140)"
                 },
                 "count": {
-                    "allowNull": false,
                     "field": "count",
                     "seqType": "Sequelize.INTEGER"
                 },
@@ -576,5 +574,5 @@
     "path": "C:\\Users\\Kirilll\\4 курс\\DIPLOM\\server\\src\\database\\migrations\\_current.json",
     "backupPath": "C:\\Users\\Kirilll\\4 курс\\DIPLOM\\server\\src\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 24
+    "revision": 25
 }

@@ -421,11 +421,6 @@
                     "field": "gender",
                     "seqType": "Sequelize.BOOLEAN"
                 },
-                "gender2": {
-                    "allowNull": true,
-                    "field": "gender2",
-                    "seqType": "Sequelize.BOOLEAN"
-                },
                 "createdAt": {
                     "allowNull": false,
                     "field": "createdAt",
@@ -581,5 +576,5 @@
     "path": "C:\\Users\\Kirilll\\4 курс\\DIPLOM\\server\\src\\database\\migrations\\_current.json",
     "backupPath": "C:\\Users\\Kirilll\\4 курс\\DIPLOM\\server\\src\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 23
+    "revision": 24
 }

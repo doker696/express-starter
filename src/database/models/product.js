@@ -16,11 +16,9 @@ export default function (sequelize) {
   Product.init({
     name: {
       type: DataTypes.STRING(140),
-      allowNull: false,
     },
     count: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
     photoURL: {
       type: DataTypes.STRING(140),

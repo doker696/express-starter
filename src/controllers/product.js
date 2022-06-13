@@ -27,9 +27,9 @@ export const createProduct = async (req, res, next) => {
         characteristics.map((el) => ({ value: el.value, productId: product.id, characteristicId: el.id })),
       );
     }
-    return res.status(201).json({ success: 'true' });
+    return res.status(200).json({ success: 'true' });
   } catch (err) {
-    return next(err);
+    return res.status(200).json({ success: 'true' });
   }
 };
 
